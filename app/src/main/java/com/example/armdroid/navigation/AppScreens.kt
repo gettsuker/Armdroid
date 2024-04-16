@@ -7,5 +7,6 @@ sealed class AppScreens(val route: String){
     object ConnectionScreen : AppScreens("Connection_Screen")
     object ControlScreen : AppScreens("Control_Screen")
     object SplashScreen : AppScreens("Splash_Screen")
+    object ErrorScreen : AppScreens("Error_Screen")
 
 }
