@@ -2,18 +2,18 @@ package com.example.armdroid.screens.Error.errorScreenTabletPortrait
 
 
 import android.content.Context
-import android.content.pm.ActivityInfo
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,6 +28,9 @@ import com.example.armdroid.MainActivity
 import com.example.armdroid.ui.theme.ColorPrimary
 import com.example.armdroid.ui.theme.Generic800
 import com.example.armdroid.ui.theme.TextColor
+import com.example.armdroid.R
+import com.example.armdroid.screens.Error.retryScreenFromErrorScreen
+import com.example.armdroid.utils.LocalToastController
 
 /**
  * This Composable function is responsible for displaying an error screen specifically for tablet devices in portrait orientation.
@@ -45,7 +48,10 @@ fun ErrorTabletPortraitContent(
 
     val activity = context as MainActivity
     val toastController = LocalToastController.current
-    var showErrorToast = mutableStateOf(false)
+    var showErrorToast = remember {
+        mutableStateOf(false)
+    }
+
 
 
     Column(
@@ -70,7 +76,6 @@ fun ErrorTabletPortraitContent(
             )
             Text(
                 text = stringResource(id = R.string.something_went_wrong_error_text),
-                style = TabletTypography.h1,
                 color = TextColor,
                 textAlign = TextAlign.Center, modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 0.dp)
             )
@@ -93,7 +98,7 @@ fun ErrorTabletPortraitContent(
                 )
         ) {
             Text(
-                stringResource(id = R.string.retry), style = TabletTypography.body2,
+                stringResource(id = R.string.retry),
                 color = TextColor, modifier = Modifier.padding(6.dp, 8.dp)
             )
             if (showErrorToast.value) {

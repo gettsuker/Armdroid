@@ -10,9 +10,13 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.navigation.NavHostController
+import coil.imageLoader
 import com.example.armdroid.MainActivity
 import com.example.armdroid.navigation.AppScreens
+import com.example.armdroid.screens.Splash.splashScreenPhone.SplashPhone
+import com.example.armdroid.screens.Splash.splashScreenTablet.SplashTablet
 import com.example.armdroid.utils.DeviceType
+import com.example.armdroid.utils.SharedPref
 import com.example.armdroid.utils.getDeviceType
 import com.example.armdroid.viewmodels.SplashScreenViewModel
 import java.util.concurrent.TimeUnit

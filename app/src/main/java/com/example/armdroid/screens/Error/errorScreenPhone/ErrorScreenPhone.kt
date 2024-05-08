@@ -6,14 +6,16 @@ import android.content.pm.ActivityInfo
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Text
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
+
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role.Companion.Button
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -28,6 +31,10 @@ import com.example.armdroid.MainActivity
 import com.example.armdroid.ui.theme.ColorPrimary
 import com.example.armdroid.ui.theme.Generic800
 import com.example.armdroid.ui.theme.TextColor
+import com.example.armdroid.R
+import com.example.armdroid.screens.Error.retryScreenFromErrorScreen
+import com.example.armdroid.ui.theme.Typography
+import com.example.armdroid.utils.LocalToastController
 
 /**
  * This Composable function is responsible for displaying an error screen specifically for phone devices.
@@ -45,7 +52,9 @@ fun ErrorMobilePhoneContent(
     val activity = context as MainActivity
     activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT
     val toastController = LocalToastController.current
-    var showErrorToast = mutableStateOf(false)
+    var showErrorToast = remember {
+        mutableStateOf(false)
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -67,7 +76,7 @@ fun ErrorMobilePhoneContent(
             )
             Text(
                 text = stringResource(id = R.string.something_went_wrong_error_text),
-                style = Typography.h1,
+                style = Typography.headlineLarge,
                 color = TextColor,
                 textAlign = TextAlign.Center, modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 0.dp)
             )
@@ -75,20 +84,20 @@ fun ErrorMobilePhoneContent(
         }
 
         Button(
-            colors = ButtonDefaults.outlinedButtonColors(backgroundColor = ColorPrimary),
+            colors = ButtonDefaults.outlinedButtonColors(ColorPrimary),
             onClick = {
-                retryScreenFromErrorScreen(navController, activity, showErrorToast, context)
+                 retryScreenFromErrorScreen(navController, activity, showErrorToast, context)
 
             },
             modifier = Modifier
                 .padding(0.dp, 35.dp, 0.dp, 0.dp)
                 .clip(RoundedCornerShape(8.dp))
         ) {
-
             Text(
-                stringResource(id = R.string.retry), style = Typography.body2,
-                color = TextColor, modifier = Modifier.padding(12.dp, 5.dp)
+                stringResource(id = R.string.retry),
+                color = TextColor, modifier = Modifier.padding(6.dp, 8.dp)
             )
+
             if (showErrorToast.value) {
                 val toastText = stringResource(id = R.string.Not_internet_connection)
                 LaunchedEffect(Unit) {
