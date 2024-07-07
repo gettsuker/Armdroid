@@ -30,12 +30,6 @@ import com.example.armdroid.ui.theme.SelectedTagCategory
 import com.example.armdroid.ui.theme.Teal200
 import com.example.armdroid.ui.theme.Teal700
 import com.example.armdroid.ui.theme.TextColor
-import com.example.armdroid.ui.theme.YbvrAlertDarkGreen
-import com.example.armdroid.ui.theme.YbvrAlertDarkRed
-import com.example.armdroid.ui.theme.YbvrAlertRed
-import com.example.armdroid.ui.theme.YbvrDarkBlue200
-import com.example.armdroid.ui.theme.YbvrSliderBackgroundColor
-import com.example.armdroid.ui.theme.YbvrTagBackgroundColor
 import com.example.armdroid.ui.theme.getAllCustomColorsWithNames
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -225,16 +219,6 @@ class SharedPref {
             ColorAccent = savedColorsMap["ColorAccent"]?: DefaultColor
             ColorAccentDark = savedColorsMap["ColorAccentDark"]?: DefaultColor
             IconColor = savedColorsMap["IconColor"]?: DefaultColor
-        }
-
-        fun removeVideoFromFavourites(videoId: Int) {
-            val editor = mSharedPrefFavouritesVideos.edit()
-            editor.remove(videoId.toString())
-            editor.apply()
-        }
-
-        fun getFavouriteVideos(): List<Int> {
-            return mSharedPrefFavouritesVideos.all.keys.map { it.toInt() }
         }
     }
 }

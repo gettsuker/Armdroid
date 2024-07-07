@@ -76,7 +76,7 @@ fun ErrorMobilePhoneContent(
             )
             Text(
                 text = stringResource(id = R.string.something_went_wrong_error_text),
-                style = Typography.headlineLarge,
+                style = Typography.h1,
                 color = TextColor,
                 textAlign = TextAlign.Center, modifier = Modifier.padding(0.dp, 8.dp, 0.dp, 0.dp)
             )

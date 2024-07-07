@@ -10,6 +10,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.armdroid.screens.Connection.ConnectionScreen
 import com.example.armdroid.screens.Control.ControlScreen
 import com.example.armdroid.screens.Splash.SplashScreen
+import com.example.armdroid.utils.CustomToastMessage
+import com.example.armdroid.utils.LocalToastController
 import com.example.armdroid.viewmodels.SplashScreenViewModel
 
 /**
@@ -21,7 +23,7 @@ fun AppNavigation(
     context: Context
 ): NavController {
 
-
+    val toastController = LocalToastController.current
     val navController = rememberNavController()
 
     val splashScreenViewModel = viewModel<SplashScreenViewModel>()
@@ -39,7 +41,15 @@ fun AppNavigation(
             ControlScreen(navController, context, splashScreenViewModel)
         }
     }
-
+    if (toastController?.show?.value == true) {
+        CustomToastMessage(
+            show = toastController._show,
+            message = toastController.message.value,
+            backgroundColor = toastController.backgroundColor.value,
+            duration = 3000L, // duration in milliseconds
+            onDismissRequest = { toastController._show.value = false }
+        )
+    }
 
     return navController
 }

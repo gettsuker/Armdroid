@@ -20,7 +20,14 @@ import com.example.armdroid.utils.SharedPref
 import com.example.armdroid.utils.getDeviceType
 import com.example.armdroid.viewmodels.SplashScreenViewModel
 import java.util.concurrent.TimeUnit
-
+/**
+ * Displays the splash screen based on the device type (phone or tablet).
+ *
+ * @param navController The Navigation Controller used to manage the screens of the application.
+ *                      It allows the function to navigate to another screen.
+ * @param context The application context, passed as an input parameter from the activity.
+ * @param splashScreenViewModel The ViewModel associated with the splash screen.
+ */
 @Composable
 fun SplashScreen(
     navController: NavHostController,
@@ -55,7 +62,6 @@ fun SplashScreen(
         DeviceType.Phone -> SplashPhone(context = context)
         else -> SplashTablet()
     }
-    deleteOldCachedImages(context)
 }
 
 /**

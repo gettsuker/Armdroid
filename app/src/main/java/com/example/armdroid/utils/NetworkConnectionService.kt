@@ -20,7 +20,7 @@ class NetworkConnectionService  constructor(context: Context, override val corou
     val _errorCode = MutableLiveData<Int>(0)
     var errorCode : LiveData<Int> = _errorCode
     private val runnable = Runnable {
-        if (!isOnline()){
+        if (!isOnline(context)){
             _errorCode.postValue(2)
         }
     }

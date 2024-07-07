@@ -47,7 +47,12 @@ object NetworkManager {
         }
     }
 }
-
+/**
+ * Checks whether the app is currently in the foreground.
+ *
+ * @param context The application context.
+ * @return `true` if the app is in the foreground, `false` otherwise.
+ */
 fun isAppInForeground(context: Context): Boolean {
     val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
     val runningAppProcesses = activityManager.runningAppProcesses
