@@ -41,6 +41,7 @@ fun ControlScreenPhoneContent(navController: NavController, context: Context) {
     var sliderValue2 by remember { mutableStateOf(90f) }
     var sliderValue3 by remember { mutableStateOf(90f) }
     var sliderValue4 by remember { mutableStateOf(90f) }
+    var sliderValue5 by remember { mutableStateOf(90f) }
     var playButtonValue by remember {
         mutableStateOf(false)
     }
@@ -72,9 +73,9 @@ fun ControlScreenPhoneContent(navController: NavController, context: Context) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Wrist", color = Color.White, fontSize = 32.sp)
                 Slider(
-                    value = sliderValue4,
+                    value = sliderValue2,
                     onValueChange = {
-                        sliderValue4 = it
+                        sliderValue2 = it
                         sendWebSocketMessage("Wrist,${it.toInt()}", context = context)
                     },
                     valueRange = 0f..180f, colors = SliderDefaults.colors(
@@ -86,9 +87,9 @@ fun ControlScreenPhoneContent(navController: NavController, context: Context) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Elbow", color = Color.White, fontSize = 32.sp)
                 Slider(
-                    value = sliderValue2,
+                    value = sliderValue3,
                     onValueChange = {
-                        sliderValue2 = it
+                        sliderValue3 = it
                         sendWebSocketMessage("Elbow,${it.toInt()}", context = context)
                     },
                     valueRange = 0f..180f, colors = SliderDefaults.colors(
@@ -100,9 +101,9 @@ fun ControlScreenPhoneContent(navController: NavController, context: Context) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Shoulder", color = Color.White, fontSize = 32.sp)
                 Slider(
-                    value = sliderValue3,
+                    value = sliderValue4,
                     onValueChange = {
-                        sliderValue3 = it
+                        sliderValue4 = it
                         sendWebSocketMessage("Shoulder,${it.toInt()}", context = context)
                     },
                     valueRange = 0f..180f, colors = SliderDefaults.colors(
@@ -114,9 +115,9 @@ fun ControlScreenPhoneContent(navController: NavController, context: Context) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(text = "Base", color = Color.White, fontSize = 32.sp)
                 Slider(
-                    value = sliderValue4,
+                    value = sliderValue5,
                     onValueChange = {
-                        sliderValue4 = it
+                        sliderValue5 = it
                         sendWebSocketMessage("Base,${it.toInt()}", context = context)
                     },
                     valueRange = 0f..180f, colors = SliderDefaults.colors(
