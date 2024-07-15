@@ -45,6 +45,13 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE"
+            merges += "META-INF/LICENSE.txt"
+            merges += "META-INF/DEPENDENCIES"
+            merges += "META-INF/NOTICE"
+            merges += "META-INF/NOTICE.txt"
+            merges += "META-INF/NOTICE.md"
         }
     }
 }
@@ -89,9 +96,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
     testImplementation("androidx.arch.core:core-testing:2.1.0")
     testImplementation("com.google.truth:truth:1.1.5")
-    testImplementation("org.mockito:mockito-core:5.5.0")
-    testImplementation("io.mockk:mockk:1.13.7")
-    testImplementation("org.mockito:mockito-inline:5.2.0")
+
     implementation("io.coil-kt:coil-compose:2.4.0")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
@@ -100,8 +105,6 @@ dependencies {
     androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4")
     androidTestImplementation("androidx.arch.core:core-testing:2.1.0")
     androidTestImplementation("com.google.truth:truth:1.1.5")
-    androidTestImplementation("org.mockito:mockito-core:5.5.0")
-    androidTestImplementation("io.mockk:mockk-android:1.13.7")
 
     androidTestImplementation("androidx.test:runner:1.5.2")
     androidTestUtil("androidx.test:orchestrator:1.4.2")
